@@ -10,7 +10,7 @@ import org.joda.time.DateTime
 class TodoService {
 
     suspend fun getAllTodos(): List<Todo> = dbQuery {
-        TodoTable.selectAll().map { it.toModel() }
+        TodoTable.selectAll().orderBy(TodoTable.date to SortOrder.DESC).map { it.toModel() }
     }
 
     suspend fun getTodoById(id: Int): Todo? = dbQuery {

@@ -9,10 +9,10 @@ object DatabaseFactory {
 
     fun init() {
         Database.connect(
-            "jdbc:mysql://us-cdbr-iron-east-01.cleardb.net/heroku_8e048c86bee0a18",
+            url = "jdbc:mysql://us-cdbr-iron-east-01.cleardb.net/heroku_8e048c86bee0a18",
             driver = "com.mysql.jdbc.Driver",
             user = "bb09bde0afe4ed",
-            password = "Rahasia :P"
+            password = "Rahasia P"
         )
     }
 
