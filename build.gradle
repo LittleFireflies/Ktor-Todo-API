@@ -1,0 +1,48 @@
+buildscript {
+    ext.appengine_version = '1.9.60'
+    ext.appengine_plugin_version = '1.3.4'
+
+    repositories {
+        jcenter()
+    }
+    
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.cloud.tools:appengine-gradle-plugin:$appengine_plugin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+apply plugin: 'com.google.cloud.tools.appengine'
+
+group 'com.littlefireflies'
+version '0.0.1'
+mainClassName = "io.ktor.server.netty.EngineMain"
+
+sourceSets {
+    main.kotlin.srcDirs = main.java.srcDirs = ['src']
+    test.kotlin.srcDirs = test.java.srcDirs = ['test']
+    main.resources.srcDirs = ['resources']
+    test.resources.srcDirs = ['testresources']
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "io.ktor:ktor-server-netty:$ktor_version"
+    implementation "ch.qos.logback:logback-classic:$logback_version"
+    implementation "io.ktor:ktor-gson:$ktor_version"
+    //Exposed
+    implementation 'org.jetbrains.exposed:exposed:0.16.1'
+    //Exposed mysql
+    implementation "mysql:mysql-connector-java:5.1.46"
+    testImplementation "io.ktor:ktor-server-tests:$ktor_version"
+
+    implementation "com.google.appengine:appengine:$appengine_version"
+}
+
