@@ -30,5 +30,4 @@ fun Application.module() {
 
 fun main() {
     embeddedServer(Netty, 8000, watchPaths = listOf("Main.kt"), module = Application::module).start(true)
-//    2019-07-08T00:00:00.000+07:00
 }

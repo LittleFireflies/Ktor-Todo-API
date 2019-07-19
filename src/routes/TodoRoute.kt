@@ -1,6 +1,7 @@
 package com.littlefireflies.routes
 
 import com.littlefireflies.model.NewTodo
+import com.littlefireflies.model.Response
 import com.littlefireflies.service.TodoService
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
@@ -50,7 +51,7 @@ fun Route.todo(todoService: TodoService) {
             val success = todoService.deleteTodo(id)
 
             if (success) {
-                call.respond("Delete successful")
+                call.respond(Response(message = "Delete successful"))
             } else {
                 call.respond(HttpStatusCode.NotFound, "Delete Failed")
             }
