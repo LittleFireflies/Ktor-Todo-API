@@ -1,12 +1,15 @@
 package com.littlefireflies.model
 
 import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.sql.jodatime.date
 
 object TodoTable : Table(name = "todo") {
-    val id = integer("id").primaryKey().autoIncrement()
+    val id = integer("id").autoIncrement()
     val name = varchar("name", 255)
     val date = date("date")
     val done = bool("done")
+
+    override val primaryKey = PrimaryKey(id)
 }
 
 data class Todo(
